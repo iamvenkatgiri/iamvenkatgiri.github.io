@@ -1,0 +1,27 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
+const About = () => {
+  return (
+    <section className="py-16 px-4 sm:px-8 lg:px-16 bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-8 text-center">
+          About Me
+        </h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed"
+        >
+          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            Cloud and DevOps Engineer with 4+ years of experience in designing, implementing, and automating scalable infrastructure solutions. Skilled in full-stack DevOps processes, containerization, and Infrastructure as Code with a strong focus on technical support and troubleshooting. Passionate about enhancing reliability and security in cloud environments, while articulating complex Cloud and DevOps concepts effectively.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
