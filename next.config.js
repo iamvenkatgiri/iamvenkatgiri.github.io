@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'export',
   images: {
-    formats: ['image/avif', 'image/webp'],
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -37,9 +37,6 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    unoptimized: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
@@ -50,8 +47,8 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
-  basePath: '/portfolio',
-  assetPrefix: '/portfolio/',
+  basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/portfolio/' : '',
 }
 
 module.exports = nextConfig 
