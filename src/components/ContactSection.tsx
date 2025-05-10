@@ -19,16 +19,20 @@ export default function ContactSection() {
         <Image
           src="/images/contact-pattern-1.svg"
           alt="Decorative pattern"
-          fill
+          width={256}
+          height={256}
           className="object-contain"
+          priority
         />
       </div>
       <div className="absolute bottom-0 right-0 w-64 h-64 opacity-10 dark:opacity-20">
         <Image
           src="/images/contact-pattern-2.svg"
           alt="Decorative pattern"
-          fill
+          width={256}
+          height={256}
           className="object-contain"
+          priority
         />
       </div>
       
@@ -139,7 +143,7 @@ export default function ContactSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="h-full"
+            className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-700"
           >
             <ContactForm />
           </motion.div>
