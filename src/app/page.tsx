@@ -76,6 +76,33 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Certifications Section */}
+        <section id="certifications" className="py-12 bg-white dark:bg-slate-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Certifications</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                A showcase of my professional certifications and achievements.
+              </p>
+            </div>
+            <div className="relative">
+              <div className="overflow-x-auto pb-6 custom-scrollbar">
+                <div className="flex gap-6 min-w-max px-1">
+                  {certifications.map((cert, index) => (
+                    <CertificationCard
+                      key={`${cert.title}-${index}`}
+                      title={cert.title}
+                      issuer={cert.issuer}
+                      date={cert.date}
+                      url={cert.url}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Experience Section */}
         <section id="resume" className="py-16 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,7 +129,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project, index) => (
                 <ProjectCard
-                  key={`${project.title}-${index}`} // Ensure unique key
+                  key={`${project.title}-${index}`}
                   {...project}
                 />
               ))}
@@ -111,7 +138,7 @@ export default function Home() {
         </section>
 
         {/* Skills Section */}
-        <section id="skills" className="py-16 bg-gray-50 dark:bg-gray-900">
+        <section id="skills" className="py-12 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
               Skills & Expertise
@@ -119,7 +146,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {skillCategories.map((category) => (
                 <SkillCard
-                  key={category.name} // Use category name as unique key
+                  key={category.name}
                   category={category.name}
                   skills={category.skills}
                 />
@@ -128,32 +155,31 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Certifications Section */}
-        <section id="certifications" className="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Certifications</h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                A showcase of my professional certifications and achievements.
-              </p>
-            </div>
-            <div className="relative">
-              <div className="overflow-x-auto pb-6 scrollbar-hide">
-                <div className="flex gap-6 min-w-max px-1">
-                  {certifications.map((cert, index) => (
-                    <CertificationCard
-                      key={`${cert.title}-${index}`}
-                      title={cert.title}
-                      issuer={cert.issuer}
-                      date={cert.date}
-                      url={cert.url}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <style jsx global>{`
+          .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+          }
+          .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f3f4f6;
+            border-radius: 4px;
+          }
+          .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(to right, #10b981, #059669);
+            border-radius: 4px;
+          }
+          .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to right, #059669, #047857);
+          }
+          .dark .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1f2937;
+          }
+          .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(to right, #059669, #047857);
+          }
+          .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to right, #047857, #065f46);
+          }
+        `}</style>
 
         {/* Contact Section */}
         <ContactSection />

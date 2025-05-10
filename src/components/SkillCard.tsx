@@ -38,18 +38,18 @@ export default function SkillCard({ category, skills }: SkillCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-full"
+      className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-full"
     >
       <div className="flex flex-col h-full">
         <motion.h3 
-          className="text-xl font-semibold text-gray-800 dark:text-white mb-6"
+          className="text-lg font-semibold text-gray-800 dark:text-white mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
           {category}
         </motion.h3>
-        <div className="flex flex-col gap-3 mt-auto">
+        <div className="flex flex-col gap-2 mt-auto">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
