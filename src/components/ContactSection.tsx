@@ -14,26 +14,28 @@ export default function ContactSection() {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/90 to-white dark:from-gray-900/80 dark:via-gray-900/90 dark:to-gray-900" />
       
-      {/* Decorative Images */}
-      <div className="absolute top-0 left-0 w-64 h-64 opacity-10 dark:opacity-20">
-        <Image
-          src="/images/contact-pattern-1.svg"
-          alt="Decorative pattern"
-          width={256}
-          height={256}
-          className="object-contain"
-          priority
-        />
-      </div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 opacity-10 dark:opacity-20">
-        <Image
-          src="/images/contact-pattern-2.svg"
-          alt="Decorative pattern"
-          width={256}
-          height={256}
-          className="object-contain"
-          priority
-        />
+      {/* Decorative Images - Optimized */}
+      <div className="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none">
+        <div className="absolute top-0 left-0 w-32 h-32">
+          <Image
+            src={`${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/images/contact-pattern-1.svg`}
+            alt=""
+            width={128}
+            height={128}
+            className="object-contain"
+            loading="lazy"
+          />
+        </div>
+        <div className="absolute bottom-0 right-0 w-32 h-32">
+          <Image
+            src={`${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/images/contact-pattern-2.svg`}
+            alt=""
+            width={128}
+            height={128}
+            className="object-contain"
+            loading="lazy"
+          />
+        </div>
       </div>
       
       {/* Content */}
