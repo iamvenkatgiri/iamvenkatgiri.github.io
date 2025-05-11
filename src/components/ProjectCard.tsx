@@ -87,6 +87,8 @@ export default function ProjectCard({
                 onLoad={() => setIsImageLoaded(true)}
                 loading="lazy"
                 quality={75}
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml,%3Csvg width='600' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='600' height='400' fill='%23e5e7eb'/%3E%3C/svg%3E"
               />
             </>
           ) : (

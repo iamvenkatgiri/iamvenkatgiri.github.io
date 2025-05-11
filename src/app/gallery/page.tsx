@@ -3,52 +3,52 @@ import Navigation from '@/components/Navigation';
 
 const galleryImages = [
   {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-1.png`,
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-1.webp`,
     alt: "Academic Journey",
     description: "My educational path and academic achievements"
   },
   {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-2.jpeg`,
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-2.webp`,
     alt: "Professional Growth",
     description: "Key milestones in my professional development"
   },
   {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-3.jpeg`,
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-3.webp`,
     alt: "Current Role",
     description: "My current position and ongoing contributions"
   },
   {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-4.jpeg`,
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-4.webp`,
     alt: "Professional Experience",
     description: "Working on cloud and DevOps projects"
   },
   {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-5.jpeg`,
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-5.webp`,
     alt: "Team Collaboration",
     description: "Collaborating with cross-functional teams"
   },
   {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-6.jpeg`,
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-6.webp`,
     alt: "Technical Projects",
     description: "Implementing innovative solutions"
   },
   {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-7.jpeg`,
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-7.webp`,
     alt: "Learning Journey",
     description: "Continuous learning and growth"
   },
   {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-8.jpeg`,
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-8.webp`,
     alt: "Industry Events",
     description: "Participating in tech conferences and meetups"
   },
   {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-9.jpeg`,
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-9.webp`,
     alt: "Community Engagement",
     description: "Contributing to the tech community"
   },
   {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-10.jpeg`,
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-10.webp`,
     alt: "Future Goals",
     description: "Looking forward to new challenges"
   }

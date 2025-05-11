@@ -6,26 +6,16 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link';
 
 const images = [
-  {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-1.png`,
-    alt: "Academic Journey"
-  },
-  {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-2.jpeg`,
-    alt: "Professional Growth"
-  },
-  {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-3.jpeg`,
-    alt: "Current Role"
-  },
-  {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-4.jpeg`,
-    alt: "Professional Experience"
-  },
-  {
-    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-5.jpeg`,
-    alt: "Team Collaboration"
-  }
+  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-1.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-2.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-3.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-4.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-5.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-6.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-7.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-8.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-9.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-10.webp`
 ];
 
 export default function BackgroundSlideshow() {
@@ -40,7 +30,7 @@ export default function BackgroundSlideshow() {
     const nextIndex = (index + 1) % images.length;
     if (!preloadedImages.has(nextIndex)) {
       const img = document.createElement('img');
-      img.src = images[nextIndex].src;
+      img.src = images[nextIndex];
       img.onload = () => {
         setPreloadedImages(prev => new Set([...prev, nextIndex]));
       };
@@ -72,8 +62,8 @@ export default function BackgroundSlideshow() {
             className="absolute inset-0"
           >
             <Image
-              src={images[currentIndex].src}
-              alt={images[currentIndex].alt}
+              src={images[currentIndex]}
+              alt="Academic Journey"
               fill
               className="object-cover"
               priority={currentIndex === 0}

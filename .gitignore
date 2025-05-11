@@ -1,3 +1,4 @@
 .next
 out
 node_modules
+convert-to-webp.sh
