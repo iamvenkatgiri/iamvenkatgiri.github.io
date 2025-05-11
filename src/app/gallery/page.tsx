@@ -3,52 +3,52 @@ import Navigation from '@/components/Navigation';
 
 const galleryImages = [
   {
-    src: "/journey-images/journey-1.png",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-1.png`,
     alt: "Academic Journey",
     description: "My educational path and academic achievements"
   },
   {
-    src: "/journey-images/journey-2.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-2.jpeg`,
     alt: "Professional Growth",
     description: "Key milestones in my professional development"
   },
   {
-    src: "/journey-images/journey-3.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-3.jpeg`,
     alt: "Current Role",
     description: "My current position and ongoing contributions"
   },
   {
-    src: "/journey-images/journey-4.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-4.jpeg`,
     alt: "Professional Experience",
     description: "Working on cloud and DevOps projects"
   },
   {
-    src: "/journey-images/journey-5.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-5.jpeg`,
     alt: "Team Collaboration",
     description: "Collaborating with cross-functional teams"
   },
   {
-    src: "/journey-images/journey-6.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-6.jpeg`,
     alt: "Technical Projects",
     description: "Implementing innovative solutions"
   },
   {
-    src: "/journey-images/journey-7.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-7.jpeg`,
     alt: "Learning Journey",
     description: "Continuous learning and growth"
   },
   {
-    src: "/journey-images/journey-8.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-8.jpeg`,
     alt: "Industry Events",
     description: "Participating in tech conferences and meetups"
   },
   {
-    src: "/journey-images/journey-9.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-9.jpeg`,
     alt: "Community Engagement",
     description: "Contributing to the tech community"
   },
   {
-    src: "/journey-images/journey-10.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-10.jpeg`,
     alt: "Future Goals",
     description: "Looking forward to new challenges"
   }

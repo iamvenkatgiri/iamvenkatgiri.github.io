@@ -7,23 +7,23 @@ import Link from 'next/link';
 
 const images = [
   {
-    src: "/journey-images/journey-1.png",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-1.png`,
     alt: "Academic Journey"
   },
   {
-    src: "/journey-images/journey-2.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-2.jpeg`,
     alt: "Professional Growth"
   },
   {
-    src: "/journey-images/journey-3.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-3.jpeg`,
     alt: "Current Role"
   },
   {
-    src: "/journey-images/journey-4.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-4.jpeg`,
     alt: "Professional Experience"
   },
   {
-    src: "/journey-images/journey-5.jpeg",
+    src: `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/journey-5.jpeg`,
     alt: "Team Collaboration"
   }
 ];

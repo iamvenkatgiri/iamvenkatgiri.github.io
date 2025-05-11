@@ -4,16 +4,26 @@ import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import {
+  UserCircleIcon,
+  CodeBracketIcon,
+  BriefcaseIcon,
+  AcademicCapIcon,
+  DocumentCheckIcon,
+  BuildingOfficeIcon,
+  EnvelopeIcon,
+  PhotoIcon,
+  HomeIcon,
+} from '@heroicons/react/24/outline';
 
 const navigation = [
-  { name: 'About', href: '#about' },
-  { name: 'Certifications', href: '#certifications' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Gallery', href: '/gallery' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'About', href: '#about', icon: UserCircleIcon },
+  { name: 'Certifications', href: '#certifications', icon: DocumentCheckIcon },
+  { name: 'Experience', href: '#experience', icon: BuildingOfficeIcon },
+  { name: 'Projects', href: '#projects', icon: BriefcaseIcon },
+  { name: 'Skills', href: '#skills', icon: CodeBracketIcon },
+  { name: 'Gallery', href: '/gallery', icon: PhotoIcon },
+  { name: 'Contact', href: '#contact', icon: EnvelopeIcon },
 ];
 
 export default function Navigation() {
@@ -62,33 +72,36 @@ export default function Navigation() {
             href="/" 
             className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
           >
-            <span className="text-xl font-bold text-gray-900">V</span>
+            <HomeIcon className="w-6 h-6 text-gray-600" />
           </Link>
         </div>
 
         <ul className="space-y-4">
-          {navigation.map((item) => (
-            <li key={item.name} className="relative">
-              {item.href.startsWith('#') ? (
-                <button
-                  onClick={() => handleNavigation(item.href)}
-                  className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
-                >
-                  <span className="text-gray-600 hover:text-gray-900">{item.name[0]}</span>
-                </button>
-              ) : (
-                <Link
-                  href={item.href}
-                  className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
-                >
-                  <span className="text-gray-600 hover:text-gray-900">{item.name[0]}</span>
-                </Link>
-              )}
-              <div className="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                {item.name}
-              </div>
-            </li>
-          ))}
+          {navigation.map((item) => {
+            const Icon = item.icon;
+            return (
+              <li key={item.name} className="relative group">
+                {item.href.startsWith('#') ? (
+                  <button
+                    onClick={() => handleNavigation(item.href)}
+                    className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
+                  >
+                    <Icon className="w-6 h-6 text-gray-600" />
+                  </button>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
+                  >
+                    <Icon className="w-6 h-6 text-gray-600" />
+                  </Link>
+                )}
+                <div className="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                  {item.name}
+                </div>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="mt-auto">
