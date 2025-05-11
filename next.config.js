@@ -20,6 +20,11 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'placehold.co',
+      },
+      {
+        protocol: 'https',
+        hostname: 'iamvenkatgiri.github.io',
+        pathname: '/portfolio/**',
       }
     ],
     dangerouslyAllowSVG: true,

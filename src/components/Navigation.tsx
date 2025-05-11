@@ -35,10 +35,8 @@ export default function Navigation() {
     setIsOpen(false);
     
     if (href.startsWith('#')) {
-      // For hash links, if we're not on home page, navigate to home first
       if (pathname !== '/') {
         router.push('/');
-        // Use a small delay to ensure the page has loaded
         setTimeout(() => {
           const element = document.querySelector(href);
           if (element) {
@@ -46,88 +44,58 @@ export default function Navigation() {
           }
         }, 100);
       } else {
-        // If we're already on home page, just scroll
         const element = document.querySelector(href);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       }
     } else {
-      // For regular page links (like Gallery)
       router.push(href);
     }
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-md' : 'bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-gray-900">
-              Venkatgiri
-            </Link>
-          </div>
+    <nav className={`fixed left-0 top-0 h-full w-16 bg-white/80 backdrop-blur-md border-r border-gray-200 z-[100] transition-all duration-300 ${isScrolled ? 'shadow-md' : ''}`}>
+      <div className="flex flex-col h-full py-6">
+        <div className="mb-6">
+          <Link 
+            href="/" 
+            className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
+          >
+            <span className="text-xl font-bold text-gray-900">V</span>
+          </Link>
+        </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              item.href.startsWith('#') ? (
+        <ul className="space-y-4">
+          {navigation.map((item) => (
+            <li key={item.name} className="relative">
+              {item.href.startsWith('#') ? (
                 <button
-                  key={item.name}
                   onClick={() => handleNavigation(item.href)}
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
                 >
-                  {item.name}
+                  <span className="text-gray-600 hover:text-gray-900">{item.name[0]}</span>
                 </button>
               ) : (
                 <Link
-                  key={item.name}
                   href={item.href}
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
                 >
-                  {item.name}
+                  <span className="text-gray-600 hover:text-gray-900">{item.name[0]}</span>
                 </Link>
-              )
-            ))}
-          </div>
-
-          {/* Mobile Navigation Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-gray-900"
-            >
-              {isOpen ? (
-                <XMarkIcon className="h-6 w-6" />
-              ) : (
-                <Bars3Icon className="h-6 w-6" />
               )}
-            </button>
-          </div>
+              <div className="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                {item.name}
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-auto">
+          <div className="h-px bg-gray-200 mb-3"></div>
+          <p className="text-xs text-gray-500 text-center">© 2025</p>
         </div>
       </div>
-
-      {/* Mobile Navigation Menu */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-white shadow-lg"
-        >
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navigation.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => handleNavigation(item.href)}
-                className="block w-full text-left px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md"
-              >
-                {item.name}
-              </button>
-            ))}
-          </div>
-        </motion.div>
-      )}
     </nav>
   );
 }
