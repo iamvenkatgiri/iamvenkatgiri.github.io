@@ -44,6 +44,11 @@ const BackgroundSlideshow = dynamic(() => import('@/components/BackgroundSlidesh
   ssr: false
 });
 
+const ExperienceSection = dynamic(() => import('@/components/ExperienceSection'), {
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-96" />,
+  ssr: false
+});
+
 // Loading components
 const LoadingSection = ({ height }: { height: string }) => (
   <div className={`animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg ${height}`} />
@@ -148,7 +153,7 @@ export default function Home() {
               </p>
             </div>
             <Suspense fallback={<LoadingSection height="h-96" />}>
-              <Timeline events={events} />
+              <ExperienceSection />
             </Suspense>
           </div>
         </section>

@@ -32,7 +32,7 @@ export default function ProjectCard({
     technologies.map((tech) => (
       <span
         key={tech}
-        className="px-2 py-0.5 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full"
+        className="px-2 py-0.5 text-xs bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-full"
       >
         {tech}
       </span>
@@ -47,12 +47,12 @@ export default function ProjectCard({
       className={
         isIcon
           ? 'group'
-          : 'text-xs font-medium text-gray-500 hover:text-emerald-500 transition-colors'
+          : 'text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors'
       }
       aria-label={label}
     >
       {isIcon ? (
-        <ArrowTopRightOnSquareIcon className="w-5 h-5 text-gray-400 group-hover:text-emerald-500 transition-colors" />
+        <ArrowTopRightOnSquareIcon className="w-5 h-5 text-emerald-600 dark:text-emerald-400 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors" />
       ) : (
         label
       )}
@@ -61,18 +61,18 @@ export default function ProjectCard({
 
   return (
     <motion.div
-      className="group relative bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-full"
+      className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 h-full border border-gray-100 dark:border-gray-700"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ scale: 1.01 }}
     >
       <div className="flex flex-col h-full">
         {/* Image Container */}
-        <div className="relative h-48 w-full overflow-hidden">
+        <div className="relative h-48 w-full overflow-hidden rounded-t-xl">
           {!imageError ? (
             <>
               {!isImageLoaded && (
-                <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse" />
+                <div className="absolute inset-0 bg-emerald-100 dark:bg-emerald-900/30 animate-pulse" />
               )}
               <Image
                 src={image}
@@ -92,11 +92,11 @@ export default function ProjectCard({
               />
             </>
           ) : (
-            <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-              <span className="text-gray-500 dark:text-gray-400">Image not available</span>
+            <div className="absolute inset-0 bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
+              <span className="text-emerald-600 dark:text-emerald-400">Image not available</span>
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
 
         {/* Content */}
