@@ -19,7 +19,7 @@ import {
 const navigation = [
   { name: 'About', href: '#about', icon: UserCircleIcon },
   { name: 'Certifications', href: '#certifications', icon: DocumentCheckIcon },
-  { name: 'Experience', href: '#experience', icon: BuildingOfficeIcon },
+  { name: 'Experience', href: '#resume', icon: BuildingOfficeIcon },
   { name: 'Projects', href: '#projects', icon: BriefcaseIcon },
   { name: 'Skills', href: '#skills', icon: CodeBracketIcon },
   { name: 'Gallery', href: '/gallery', icon: PhotoIcon },
@@ -31,6 +31,7 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const basePath = process.env.NODE_ENV === 'production' ? '/portfolio' : '';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +47,7 @@ export default function Navigation() {
     
     if (href.startsWith('#')) {
       if (pathname !== '/') {
-        router.push('/');
+        router.push(`${basePath}/`);
         setTimeout(() => {
           const element = document.querySelector(href);
           if (element) {
@@ -60,7 +61,7 @@ export default function Navigation() {
         }
       }
     } else {
-      router.push(href);
+      router.push(`${basePath}${href}`);
     }
   };
 
@@ -69,7 +70,7 @@ export default function Navigation() {
       <div className="flex flex-col h-full py-6">
         <div className="mb-6">
           <Link 
-            href="/" 
+            href={`${basePath}/`}
             className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
           >
             <HomeIcon className="w-6 h-6 text-gray-600" />
