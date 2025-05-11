@@ -19,7 +19,7 @@ import {
 const navigation = [
   { name: 'About', href: '#about', icon: UserCircleIcon },
   { name: 'Certifications', href: '#certifications', icon: DocumentCheckIcon },
-  { name: 'Experience', href: '/#resume', icon: BuildingOfficeIcon },
+  { name: 'Experience', href: '#experience', icon: BuildingOfficeIcon },
   { name: 'Projects', href: '#projects', icon: BriefcaseIcon },
   { name: 'Skills', href: '#skills', icon: CodeBracketIcon },
   { name: 'Gallery', href: '/gallery', icon: PhotoIcon },
