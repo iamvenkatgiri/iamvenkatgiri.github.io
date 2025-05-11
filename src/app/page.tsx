@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import Navigation from '@/components/Navigation';
 import { skillCategories } from '@/data/skills';
 import { projects } from '@/data/projects';
@@ -9,37 +10,51 @@ import { certifications } from '@/data/certifications';
 
 // Dynamically import components with loading fallbacks
 const SkillCard = dynamic(() => import('@/components/SkillCard'), {
-  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-48" />
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-48" />,
+  ssr: false
 });
 
 const ProjectCard = dynamic(() => import('@/components/ProjectCard'), {
-  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-64" />
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-64" />,
+  ssr: false
 });
 
 const CertificationCard = dynamic(() => import('@/components/CertificationCard'), {
-  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-32" />
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-32" />,
+  ssr: false
 });
 
 const Timeline = dynamic(() => import('@/components/Timeline'), {
-  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-96" />
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-96" />,
+  ssr: false
 });
 
 const About = dynamic(() => import('@/components/About'), {
-  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-64" />
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-64" />,
+  ssr: false
 });
 
 const ContactSection = dynamic(() => import('@/components/ContactSection'), {
-  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-96" />
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-96" />,
+  ssr: false
 });
 
 const BackgroundSlideshow = dynamic(() => import('@/components/BackgroundSlideshow'), {
-  loading: () => <div className="fixed inset-0 bg-gray-100 dark:bg-gray-800" />
+  loading: () => <div className="fixed inset-0 bg-gray-100 dark:bg-gray-800" />,
+  ssr: false
 });
+
+// Loading components
+const LoadingSection = ({ height }: { height: string }) => (
+  <div className={`animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg ${height}`} />
+);
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <BackgroundSlideshow />
+      <Suspense fallback={<div className="fixed inset-0 bg-gray-100 dark:bg-gray-800" />}>
+        <BackgroundSlideshow />
+      </Suspense>
       <Navigation />
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -85,7 +100,9 @@ export default function Home() {
         {/* About Section */}
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <About />
+            <Suspense fallback={<LoadingSection height="h-64" />}>
+              <About />
+            </Suspense>
           </div>
         </section>
 
@@ -101,15 +118,17 @@ export default function Home() {
             <div className="relative">
               <div className="overflow-x-auto pb-6 custom-scrollbar">
                 <div className="flex gap-6 min-w-max px-1">
-                  {certifications.map((cert, index) => (
-                    <CertificationCard
-                      key={`${cert.title}-${index}`}
-                      title={cert.title}
-                      issuer={cert.issuer}
-                      date={cert.date}
-                      url={cert.url}
-                    />
-                  ))}
+                  <Suspense fallback={<LoadingSection height="h-32" />}>
+                    {certifications.map((cert, index) => (
+                      <CertificationCard
+                        key={`${cert.title}-${index}`}
+                        title={cert.title}
+                        issuer={cert.issuer}
+                        date={cert.date}
+                        url={cert.url}
+                      />
+                    ))}
+                  </Suspense>
                 </div>
               </div>
             </div>
@@ -128,7 +147,9 @@ export default function Home() {
                 A journey through my professional growth and academic achievements
               </p>
             </div>
-            <Timeline events={events} />
+            <Suspense fallback={<LoadingSection height="h-96" />}>
+              <Timeline events={events} />
+            </Suspense>
           </div>
         </section>
 
@@ -140,12 +161,14 @@ export default function Home() {
               <div className="w-16 h-1 bg-emerald-600 mx-auto mb-4"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
-                <ProjectCard
-                  key={`${project.title}-${index}`}
-                  {...project}
-                />
-              ))}
+              <Suspense fallback={<LoadingSection height="h-64" />}>
+                {projects.map((project, index) => (
+                  <ProjectCard
+                    key={`${project.title}-${index}`}
+                    {...project}
+                  />
+                ))}
+              </Suspense>
             </div>
           </div>
         </section>
@@ -157,13 +180,15 @@ export default function Home() {
               Skills & Expertise
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {skillCategories.map((category) => (
-                <SkillCard
-                  key={category.name}
-                  category={category.name}
-                  skills={category.skills}
-                />
-              ))}
+              <Suspense fallback={<LoadingSection height="h-48" />}>
+                {skillCategories.map((category) => (
+                  <SkillCard
+                    key={category.name}
+                    category={category.name}
+                    skills={category.skills}
+                  />
+                ))}
+              </Suspense>
             </div>
           </div>
         </section>
@@ -195,7 +220,9 @@ export default function Home() {
         `}</style>
 
         {/* Contact Section */}
-        <ContactSection />
+        <Suspense fallback={<LoadingSection height="h-96" />}>
+          <ContactSection />
+        </Suspense>
       </div>
     </main>
   );

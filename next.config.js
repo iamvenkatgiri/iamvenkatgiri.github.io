@@ -41,7 +41,13 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   reactStrictMode: true,
-  swcMinify: true,
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['@heroicons/react', 'framer-motion'],
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
 }
 
 module.exports = nextConfig 
