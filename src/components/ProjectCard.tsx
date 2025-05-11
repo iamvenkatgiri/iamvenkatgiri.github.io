@@ -26,6 +26,7 @@ export default function ProjectCard({
   isBlog,
 }: ProjectCardProps) {
   const [imageError, setImageError] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const renderTechnologies = () =>
     technologies.map((tech) => (
@@ -69,17 +70,25 @@ export default function ProjectCard({
         {/* Image Container */}
         <div className="relative h-48 w-full overflow-hidden">
           {!imageError ? (
-            <Image
-              src={image}
-              alt={title}
-              width={600} // Explicitly set width
-              height={400} // Explicitly set height
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-              onError={() => setImageError(true)}
-              priority
-              quality={75}
-            />
+            <>
+              {!isImageLoaded && (
+                <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse" />
+              )}
+              <Image
+                src={image}
+                alt={title}
+                width={600}
+                height={400}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className={`object-cover transition-transform duration-300 group-hover:scale-105 ${
+                  isImageLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                onError={() => setImageError(true)}
+                onLoad={() => setIsImageLoaded(true)}
+                loading="lazy"
+                quality={75}
+              />
+            </>
           ) : (
             <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
               <span className="text-gray-500 dark:text-gray-400">Image not available</span>

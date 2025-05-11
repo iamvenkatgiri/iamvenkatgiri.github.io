@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
@@ -30,16 +30,34 @@ const images = [
 
 export default function BackgroundSlideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [preloadedImages, setPreloadedImages] = useState<Set<number>>(new Set([0]));
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 100], [1, 0]);
+  const buttonOpacity = useTransform(scrollY, [0, 100], [1, 0]);
+
+  // Preload next image
+  const preloadNextImage = useCallback((index: number) => {
+    const nextIndex = (index + 1) % images.length;
+    if (!preloadedImages.has(nextIndex)) {
+      const img = document.createElement('img');
+      img.src = images[nextIndex].src;
+      img.onload = () => {
+        setPreloadedImages(prev => new Set([...prev, nextIndex]));
+      };
+    }
+  }, [preloadedImages]);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change image every 5 seconds
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % images.length;
+        preloadNextImage(nextIndex);
+        return nextIndex;
+      });
+    }, 5000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [preloadNextImage]);
 
   return (
     <>
@@ -58,7 +76,9 @@ export default function BackgroundSlideshow() {
               alt={images[currentIndex].alt}
               fill
               className="object-cover"
-              priority
+              priority={currentIndex === 0}
+              quality={75}
+              onLoad={() => setIsLoaded(true)}
             />
           </motion.div>
         </AnimatePresence>
@@ -69,7 +89,7 @@ export default function BackgroundSlideshow() {
       
       {/* Gallery link */}
       <motion.div
-        style={{ opacity }}
+        style={{ opacity: buttonOpacity }}
         className="fixed bottom-4 right-4 z-50"
       >
         <Link 

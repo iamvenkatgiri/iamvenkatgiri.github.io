@@ -1,21 +1,40 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Navigation from '@/components/Navigation';
-import SkillCard from '@/components/SkillCard';
-import ProjectCard from '@/components/ProjectCard';
-import CertificationCard from '@/components/CertificationCard';
-import Timeline from '@/components/Timeline';
-import About from '@/components/About';
-import ContactInfo from '@/components/ContactInfo';
-import ContactForm from '@/components/ContactForm';
 import { skillCategories } from '@/data/skills';
 import { projects } from '@/data/projects';
 import { events } from '@/data/events';
 import { certifications } from '@/data/certifications';
-import { motion } from 'framer-motion';
-import { EnvelopeIcon } from '@heroicons/react/24/outline';
-import ContactSection from '@/components/ContactSection';
-import BackgroundSlideshow from '@/components/BackgroundSlideshow';
+
+// Dynamically import components with loading fallbacks
+const SkillCard = dynamic(() => import('@/components/SkillCard'), {
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-48" />
+});
+
+const ProjectCard = dynamic(() => import('@/components/ProjectCard'), {
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-64" />
+});
+
+const CertificationCard = dynamic(() => import('@/components/CertificationCard'), {
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-32" />
+});
+
+const Timeline = dynamic(() => import('@/components/Timeline'), {
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-96" />
+});
+
+const About = dynamic(() => import('@/components/About'), {
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-64" />
+});
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-96" />
+});
+
+const BackgroundSlideshow = dynamic(() => import('@/components/BackgroundSlideshow'), {
+  loading: () => <div className="fixed inset-0 bg-gray-100 dark:bg-gray-800" />
+});
 
 export default function Home() {
   return (
