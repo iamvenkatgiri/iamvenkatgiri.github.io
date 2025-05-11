@@ -9,21 +9,25 @@ import {
   DocumentCheckIcon,
   BuildingOfficeIcon,
   EnvelopeIcon,
+  PhotoIcon,
 } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 const navItems = [
-  { name: 'About', href: '#about', icon: UserCircleIcon },
-  { name: 'Experience', href: '#resume', icon: BuildingOfficeIcon },
-  { name: 'Projects', href: '#projects', icon: BriefcaseIcon },
-  { name: 'Skills', href: '#skills', icon: CodeBracketIcon },
-  { name: 'Certifications', href: '#certifications', icon: DocumentCheckIcon },
-  { name: 'Contact', href: '#contact', icon: EnvelopeIcon },
+  { name: 'About', href: '#about', icon: UserCircleIcon, isHash: true },
+  { name: 'Experience', href: '#resume', icon: BuildingOfficeIcon, isHash: true },
+  { name: 'Projects', href: '#projects', icon: BriefcaseIcon, isHash: true },
+  { name: 'Skills', href: '#skills', icon: CodeBracketIcon, isHash: true },
+  { name: 'Certifications', href: '#certifications', icon: DocumentCheckIcon, isHash: true },
+  { name: 'Gallery', href: '/gallery', icon: PhotoIcon, isHash: false },
+  { name: 'Contact', href: '#contact', icon: EnvelopeIcon, isHash: true },
 ];
 
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState('');
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,10 +41,13 @@ export default function Navigation() {
       { threshold: 0.5 }
     );
 
-    navItems.forEach((item) => {
-      const element = document.querySelector(item.href);
-      if (element) observer.observe(element);
-    });
+    // Only observe hash links
+    navItems
+      .filter(item => item.isHash)
+      .forEach((item) => {
+        const element = document.querySelector(item.href);
+        if (element) observer.observe(element);
+      });
 
     return () => observer.disconnect();
   }, []);
@@ -57,6 +64,10 @@ export default function Navigation() {
         <ul className="space-y-4">
           {navItems.map((item) => {
             const Icon = item.icon;
+            const isActive = item.isHash 
+              ? activeSection === item.href.slice(1)
+              : pathname === item.href;
+            
             return (
               <motion.li
                 key={item.name}
@@ -66,9 +77,9 @@ export default function Navigation() {
               >
                 <a
                   href={item.href}
-                  aria-current={activeSection === item.href.slice(1) ? 'page' : undefined}
+                  aria-current={isActive ? 'page' : undefined}
                   className={`flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-900 ${
-                    activeSection === item.href.slice(1)
+                    isActive
                       ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30'
                       : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
                   }`}
