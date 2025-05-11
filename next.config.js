@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : '',
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -14,28 +15,14 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'avatars.githubusercontent.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'user-images.githubusercontent.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'learn.microsoft.com',
       },
       {
         protocol: 'https',
         hostname: 'placehold.co',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
+      }
     ],
     dangerouslyAllowSVG: true,
-    contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   eslint: {
@@ -44,11 +31,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ['framer-motion', '@heroicons/react'],
-  },
-  basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : '',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/portfolio/' : '',
   poweredByHeader: false,
   compress: true,
