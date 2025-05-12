@@ -70,8 +70,8 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="relative bg-white dark:bg-gray-900 py-8">
-      <div className="w-full max-w-6xl mx-auto px-4">
+    <section id="projects" className="relative bg-white dark:bg-gray-900 py-8 sm:py-12">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
             Projects

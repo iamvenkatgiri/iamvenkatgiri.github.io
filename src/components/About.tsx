@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section className="py-8 sm:py-16 px-4 sm:px-8 lg:px-16 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-8 sm:py-12 bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-6 sm:mb-8 text-center">
           About Me
         </h2>

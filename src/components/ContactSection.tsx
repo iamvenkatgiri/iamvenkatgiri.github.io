@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="relative pt-4 sm:pt-6 pb-8 sm:pb-12 overflow-hidden">
+    <section id="contact" className="relative py-8 sm:py-12 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)]" />
       
@@ -39,7 +39,7 @@ export default function ContactSection() {
       </div>
       
       {/* Content */}
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6 sm:mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">Let's Connect</h2>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
