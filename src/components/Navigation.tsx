@@ -55,7 +55,7 @@ export default function Navigation() {
           if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
           }
-        }, 100);
+        }, 500);
       } else {
         const element = document.querySelector(href);
         if (element) {
