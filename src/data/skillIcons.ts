@@ -1,0 +1,23 @@
+export const skillIcons: Record<string, string> = {
+  'AWS': `<img src="https://cdn.simpleicons.org/amazonwebservices/currentColor" alt="AWS" />`,
+  'Azure': `<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original-wordmark.svg" alt="Azure" />`,
+  'Terraform': `<img src="https://cdn.simpleicons.org/terraform/currentColor" alt="Terraform" />`,
+  'Docker': `<img src="https://cdn.simpleicons.org/docker/currentColor" alt="Docker" />`,
+  'Kubernetes': `<img src="https://cdn.simpleicons.org/kubernetes/currentColor" alt="Kubernetes" />`,
+  'Jenkins': `<img src="https://cdn.simpleicons.org/jenkins/currentColor" alt="Jenkins" />`,
+  'Python': `<img src="https://cdn.simpleicons.org/python/currentColor" alt="Python" />`,
+  'Grafana': `<img src="https://cdn.simpleicons.org/grafana/currentColor" alt="Grafana" />`,
+  'Prometheus': `<img src="https://cdn.simpleicons.org/prometheus/currentColor" alt="Prometheus" />`,
+  'Golang': `<img src="https://cdn.simpleicons.org/go/currentColor" alt="Golang" />`,
+  'Bash': `<img src="https://cdn.simpleicons.org/gnubash/currentColor" alt="Bash" />`,
+  'PowerShell': `<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-plain.svg" alt="PowerShell" />`,
+  'GitHub Actions': `<img src="https://cdn.simpleicons.org/githubactions/currentColor" alt="GitHub Actions" />`,
+  'Azure DevOps': `<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuredevops/azuredevops-original.svg" alt="Azure DevOps" />`,
+  'AWS CloudWatch': `<img src="https://cdn.simpleicons.org/amazoncloudwatch/currentColor" alt="AWS CloudWatch" />`,
+  'New Relic': `<img src="https://cdn.simpleicons.org/newrelic/currentColor" alt="New Relic" />`,
+  'Ansible': `<img src="https://cdn.simpleicons.org/ansible/currentColor" alt="Ansible" />`,
+  'SQL': `<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqldeveloper/sqldeveloper-original.svg" alt="SQL" />`,
+  'Google Cloud': `<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original-wordmark.svg" alt="Google Cloud" />`,
+  'Helm': `<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/helm/helm-original.svg" alt="Helm" />`,
+  'Argo CD': `<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/argocd/argocd-original-wordmark.svg" alt="Argo CD" />`
+}; 

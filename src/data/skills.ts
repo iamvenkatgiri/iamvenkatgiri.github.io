@@ -14,8 +14,8 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: 'AWS', level: 'Expert' },
       { name: 'Azure', level: 'Advanced' },
+      { name: 'Google Cloud', level: 'Advanced' },
       { name: 'Terraform', level: 'Expert' },
-      { name: 'CloudFormation', level: 'Advanced' },
       { name: 'Ansible', level: 'Advanced' }
     ]
   },
@@ -24,9 +24,8 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: 'Docker', level: 'Expert' },
       { name: 'Kubernetes', level: 'Advanced' },
-      { name: 'EKS', level: 'Expert' },
-      { name: 'ECS', level: 'Advanced' },
-      { name: 'Fargate', level: 'Advanced' }
+      { name: 'Helm', level: 'Advanced' },
+      { name: 'Argo CD', level: 'Advanced' }
     ]
   },
   {
@@ -44,7 +43,8 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Python', level: 'Advanced' },
       { name: 'Bash', level: 'Advanced' },
       { name: 'PowerShell', level: 'Advanced' },
-      { name: 'Golang', level: 'Intermediate' }
+      { name: 'Golang', level: 'Intermediate' },
+      { name: 'SQL', level: 'Advanced' }
     ]
   },
   {
@@ -53,7 +53,7 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Grafana', level: 'Advanced' },
       { name: 'Prometheus', level: 'Advanced' },
       { name: 'AWS CloudWatch', level: 'Expert' },
-      { name: 'Azure Monitor', level: 'Advanced' }
+      { name: 'New Relic', level: 'Advanced' }
     ]
   }
 ];

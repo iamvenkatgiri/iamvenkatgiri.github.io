@@ -3,17 +3,11 @@
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Navigation from '@/components/Navigation';
-import { skillCategories } from '@/data/skills';
 import { projects } from '@/data/projects';
 import { events } from '@/data/events';
 import { certifications } from '@/data/certifications';
 
 // Dynamically import components with loading fallbacks
-const SkillCard = dynamic(() => import('@/components/SkillCard'), {
-  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-48" />,
-  ssr: false
-});
-
 const ProjectCard = dynamic(() => import('@/components/ProjectCard'), {
   loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-64" />,
   ssr: false
@@ -45,6 +39,11 @@ const BackgroundSlideshow = dynamic(() => import('@/components/BackgroundSlidesh
 });
 
 const ExperienceSection = dynamic(() => import('@/components/ExperienceSection'), {
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-96" />,
+  ssr: false
+});
+
+const SkillsSection = dynamic(() => import('@/components/SkillsSection'), {
   loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-96" />,
   ssr: false
 });
@@ -178,26 +177,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Skills Section */}
-        <section id="skills" className="py-12 bg-gray-50 dark:bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-              Skills & Expertise
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Suspense fallback={<LoadingSection height="h-48" />}>
-                {skillCategories.map((category) => (
-                  <SkillCard
-                    key={category.name}
-                    category={category.name}
-                    skills={category.skills}
-                  />
-                ))}
-              </Suspense>
-            </div>
-          </div>
-        </section>
-
         <style jsx global>{`
           .custom-scrollbar::-webkit-scrollbar {
             height: 8px;
@@ -223,6 +202,11 @@ export default function Home() {
             background: linear-gradient(to right, #047857, #065f46);
           }
         `}</style>
+
+        {/* Skills Section */}
+        <Suspense fallback={<LoadingSection height="h-96" />}>
+          <SkillsSection />
+        </Suspense>
 
         {/* Contact Section */}
         <Suspense fallback={<LoadingSection height="h-96" />}>
