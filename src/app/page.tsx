@@ -69,25 +69,23 @@ export default function Home() {
   const totalPages = Math.ceil(projects.length / projectsPerPage);
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       <Suspense fallback={<div className="fixed inset-0 bg-gray-100 dark:bg-gray-800" />}>
         <BackgroundSlideshow />
       </Suspense>
       <Navigation />
-      <div className="min-h-screen">
+      <div className="min-h-screen md:pl-16 relative">
         {/* Hero Section */}
-        <section id="about" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-          {/* No Background Overlay - show image clearly */}
-          
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section id="about" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4">
+          <div className="relative z-10 max-w-4xl mx-auto text-center">
             {/* Animated Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-100 border border-emerald-200 mb-8"
+              className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-emerald-100 border border-emerald-200 mb-6 sm:mb-8"
             >
-              <span className="text-emerald-700 text-sm font-medium">Cloud & DevOps Engineer</span>
+              <span className="text-emerald-700 text-xs sm:text-sm font-medium">Cloud & DevOps Engineer</span>
             </motion.div>
 
             {/* Main Heading */}
@@ -95,7 +93,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-gray-900"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-gray-900"
             >
               Venkata Giri Sasanapuri
             </motion.h1>
@@ -105,7 +103,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl sm:text-2xl text-gray-700 mb-12 font-semibold"
+              className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-8 sm:mb-12 font-semibold px-4"
             >
               Building Scalable Cloud Infrastructure & Automating DevOps
             </motion.p>
@@ -115,17 +113,17 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
             >
               <a
                 href="#projects"
-                className="inline-flex items-center px-8 py-3 rounded-lg bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg bg-emerald-500 text-white text-sm sm:text-base font-medium hover:bg-emerald-600 transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30"
               >
                 View Projects
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center px-8 py-3 rounded-lg bg-white/80 font-medium text-emerald-700 hover:bg-emerald-50 transition-all duration-300 border border-emerald-100"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg bg-white/80 font-medium text-emerald-700 text-sm sm:text-base hover:bg-emerald-50 transition-all duration-300 border border-emerald-100"
               >
                 Contact Me
               </a>
@@ -136,7 +134,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex justify-center items-center gap-6 mt-12"
+              className="flex justify-center items-center gap-4 sm:gap-6 mt-8 sm:mt-12"
             >
               <a
                 href="https://github.com/iamvenkatgiri"
@@ -174,17 +172,17 @@ export default function Home() {
         </section>
 
         {/* Certifications Section */}
-        <section id="certifications" className="py-12 bg-white dark:bg-slate-800">
+        <section id="certifications" className="py-8 sm:py-12 bg-white dark:bg-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-8">
-              <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Certifications</h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <div className="text-center mb-6 sm:mb-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-3 sm:mb-4">Certifications</h2>
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
                 A showcase of my professional certifications and achievements.
               </p>
             </div>
             <div className="relative">
-              <div className="overflow-x-auto pb-6 custom-scrollbar">
-                <div className="flex gap-6 min-w-max px-1">
+              <div className="overflow-x-auto pb-4 sm:pb-6 custom-scrollbar">
+                <div className="flex gap-4 sm:gap-6 min-w-max px-1">
                   <Suspense fallback={<LoadingSection height="h-32" />}>
                     {certifications.map((cert, index) => (
                       <CertificationCard
@@ -203,14 +201,14 @@ export default function Home() {
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="py-16 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+        <section id="experience" className="py-8 sm:py-16 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
                 Experience & Education
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-emerald-600 mx-auto rounded-full"></div>
-              <p className="mt-6 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-emerald-500 to-emerald-600 mx-auto rounded-full"></div>
+              <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
                 A journey through my professional growth and academic achievements
               </p>
             </div>

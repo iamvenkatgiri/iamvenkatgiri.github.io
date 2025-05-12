@@ -48,19 +48,19 @@ export default function SkillsSection() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredCategories.map((category, index) => (
             <motion.div
               key={category.name}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6"
             >
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">
                 {category.name}
               </h3>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-2 sm:gap-4">
                 {category.skills.map((skill) => (
                   <div
                     key={skill.name}
@@ -68,7 +68,7 @@ export default function SkillsSection() {
                   >
                     <SkillIcon
                       name={skill.name}
-                      className={`${
+                      className={`w-4 h-4 sm:w-5 sm:h-5 ${
                         skill.level === 'Expert'
                           ? 'text-emerald-500'
                           : skill.level === 'Advanced'
@@ -78,7 +78,7 @@ export default function SkillsSection() {
                           : 'text-gray-400'
                       }`}
                     />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">
+                    <span className="text-xs sm:text-sm text-gray-700 dark:text-gray-300">
                       {skill.name}
                     </span>
                   </div>

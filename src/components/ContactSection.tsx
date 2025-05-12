@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="relative pt-6 pb-12 overflow-hidden">
+    <section id="contact" className="relative pt-4 sm:pt-6 pb-8 sm:pb-12 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)]" />
       
@@ -40,22 +40,22 @@ export default function ContactSection() {
       
       {/* Content */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Let's Connect</h2>
-          <p className="text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <div className="text-center mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">Let's Connect</h2>
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Have a question or want to work together? Feel free to reach out!
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {/* Contact Information Card */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg p-6 h-full flex flex-col border border-gray-100 dark:border-gray-700"
+            className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg p-4 sm:p-6 h-full flex flex-col border border-gray-100 dark:border-gray-700"
           >
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
               Contact Information
             </h3>
             <div className="space-y-4 flex-grow">
