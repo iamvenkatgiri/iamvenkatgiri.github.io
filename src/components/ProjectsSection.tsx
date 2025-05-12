@@ -34,17 +34,18 @@ export default function ProjectsSection() {
 
   const scrollToNext = () => {
     if (containerRef.current) {
-      const currentScroll = containerRef.current.scrollTop;
-      const itemHeight = containerRef.current.clientHeight;
-      const maxScroll = containerRef.current.scrollHeight - containerRef.current.clientHeight;
+      const container = containerRef.current;
+      const currentScroll = container.scrollTop;
+      const itemHeight = container.clientHeight;
+      const maxScroll = container.scrollHeight - container.clientHeight;
       
       // If we're at the bottom, don't scroll
       if (currentScroll >= maxScroll) return;
       
       // Calculate the next snap point
-      const nextSnapPoint = Math.ceil(currentScroll / itemHeight) * itemHeight;
-      containerRef.current.scrollTo({
-        top: Math.min(nextSnapPoint, maxScroll),
+      const nextSnapPoint = Math.min(currentScroll + itemHeight, maxScroll);
+      container.scrollTo({
+        top: nextSnapPoint,
         behavior: 'smooth'
       });
     }
@@ -52,16 +53,17 @@ export default function ProjectsSection() {
 
   const scrollToPrevious = () => {
     if (containerRef.current) {
-      const currentScroll = containerRef.current.scrollTop;
-      const itemHeight = containerRef.current.clientHeight;
+      const container = containerRef.current;
+      const currentScroll = container.scrollTop;
+      const itemHeight = container.clientHeight;
       
       // If we're at the top, don't scroll
       if (currentScroll <= 0) return;
       
       // Calculate the previous snap point
-      const prevSnapPoint = Math.floor(currentScroll / itemHeight) * itemHeight;
-      containerRef.current.scrollTo({
-        top: Math.max(prevSnapPoint, 0),
+      const prevSnapPoint = Math.max(currentScroll - itemHeight, 0);
+      container.scrollTo({
+        top: prevSnapPoint,
         behavior: 'smooth'
       });
     }
@@ -78,19 +80,19 @@ export default function ProjectsSection() {
             Explore my portfolio of cloud and DevOps projects. Scroll down to discover more.
           </p>
         </div>
-        <div className="relative">
+        <div className="relative w-full">
           {/* Navigation Arrows */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full z-20 flex flex-col gap-2">
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-2">
             <button
               onClick={scrollToPrevious}
-              className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-lg"
               aria-label="Previous project"
             >
               <ChevronUpIcon className="w-4 h-4" />
             </button>
             <button
               onClick={scrollToNext}
-              className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-lg"
               aria-label="Next project"
             >
               <ChevronDownIcon className="w-4 h-4" />
@@ -100,7 +102,7 @@ export default function ProjectsSection() {
           {/* Project Container */}
           <div 
             ref={containerRef}
-            className="relative max-h-[350px] overflow-y-auto snap-y snap-mandatory pr-12 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50"
+            className="relative max-h-[350px] overflow-y-auto snap-y snap-mandatory rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 w-full pr-12"
             style={{
               msOverflowStyle: 'none',
               scrollBehavior: 'smooth',
@@ -111,11 +113,11 @@ export default function ProjectsSection() {
                 display: none;
               }
             `}</style>
-            <div className="space-y-2 p-2">
+            <div className="space-y-4 p-4 w-full">
               {projects.map((project, index) => (
                 <div 
                   key={project.title}
-                  className="snap-start min-h-[300px] flex items-center"
+                  className="snap-start min-h-[300px] flex items-center w-full"
                 >
                   <ProjectFeature {...project} />
                 </div>

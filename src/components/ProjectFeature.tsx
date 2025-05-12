@@ -38,12 +38,12 @@ export default function ProjectFeature({
 
   return (
     <motion.div
-      className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 shadow-lg w-full"
+      className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 shadow-lg w-full h-full"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="relative min-h-[250px] w-full">
+      <div className="relative min-h-[250px] w-full h-full">
         {/* Background Pattern */}
         <div 
           className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-800/50 via-gray-900/50 to-gray-900/50 dark:from-gray-700/50 dark:via-gray-800/50 dark:to-gray-900/50"
@@ -51,7 +51,7 @@ export default function ProjectFeature({
         />
         
         {/* Image Container */}
-        <div className="relative h-full w-full">
+        <div className="relative h-48 w-full">
           {!imageError ? (
             <>
               {!isImageLoaded && (
@@ -85,12 +85,12 @@ export default function ProjectFeature({
         </div>
 
         {/* Content Overlay */}
-        <div className="absolute inset-0 p-6 flex flex-col justify-end">
+        <div className="absolute inset-x-0 bottom-0 p-4 flex flex-col justify-end bg-gradient-to-t from-gray-900 via-gray-900/95 to-transparent">
           <div className="space-y-2">
-            <h3 className="text-2xl font-bold text-white">
+            <h3 className="text-xl font-bold text-white line-clamp-1">
               {title}
             </h3>
-            <p className="text-gray-200 text-sm leading-relaxed">
+            <p className="text-gray-200 text-sm leading-relaxed line-clamp-2">
               {description}
             </p>
           </div>
@@ -108,7 +108,7 @@ export default function ProjectFeature({
           </div>
 
           {/* Links */}
-          <div className="flex items-center gap-4 mt-4">
+          <div className="flex items-center gap-4 mt-3">
             {githubUrl && (
               <motion.a
                 href={githubUrl}
