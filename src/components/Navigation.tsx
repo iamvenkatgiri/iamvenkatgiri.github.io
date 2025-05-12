@@ -15,6 +15,7 @@ import {
   PhotoIcon,
   HomeIcon,
   Squares2X2Icon,
+  DocumentArrowDownIcon,
 } from '@heroicons/react/24/outline';
 
 const navigation = [
@@ -25,6 +26,7 @@ const navigation = [
   { name: 'Skills', href: '#skills', icon: CodeBracketIcon },
   { name: 'Gallery', href: '/gallery', icon: PhotoIcon },
   { name: 'Contact', href: '#contact', icon: EnvelopeIcon },
+  { name: 'Resume', href: '/VenkataGiri_Resume.pdf', icon: DocumentArrowDownIcon },
 ];
 
 export default function Navigation() {
@@ -80,28 +82,47 @@ export default function Navigation() {
         <ul className="space-y-4">
           {navigation.map((item) => {
             const Icon = item.icon;
-            return (
-              <li key={item.name} className="relative group">
-                {item.href.startsWith('#') ? (
-                  <button
-                    onClick={() => handleNavigation(item.href)}
-                    className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
-                  >
-                    <Icon className="w-6 h-6 text-gray-600" />
-                  </button>
-                ) : (
-                  <Link
+            if (item.name === 'Resume') {
+              return (
+                <li key={item.name} className="relative group">
+                  <a
                     href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
+                    aria-label="View Resume"
                   >
                     <Icon className="w-6 h-6 text-gray-600" />
-                  </Link>
-                )}
-                <div className="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                  {item.name}
-                </div>
-              </li>
-            );
+                  </a>
+                  <div className="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                    View Resume
+                  </div>
+                </li>
+              );
+            } else {
+              return (
+                <li key={item.name} className="relative group">
+                  {item.href.startsWith('#') ? (
+                    <button
+                      onClick={() => handleNavigation(item.href)}
+                      className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
+                    >
+                      <Icon className="w-6 h-6 text-gray-600" />
+                    </button>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="flex items-center justify-center w-10 h-10 mx-auto rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100"
+                    >
+                      <Icon className="w-6 h-6 text-gray-600" />
+                    </Link>
+                  )}
+                  <div className="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                    {item.name}
+                  </div>
+                </li>
+              );
+            }
           })}
         </ul>
 
