@@ -84,14 +84,14 @@ export default function Timeline({ events }: TimelineProps) {
                 {/* Description */}
                 <div 
                   className="overflow-hidden transition-all duration-300"
-                  style={{ maxHeight: expandedIndex === index ? '1000px' : '120px' }}
+                  style={{ maxHeight: expandedIndex === index ? '1000px' : '96px' }}
                 >
                   <div className="p-4">
                     <ul className="space-y-2">
                       {event.description.map((item, i) => (
                         <li key={i} className="text-sm text-gray-600 dark:text-gray-300 flex items-start">
                           <span className="mr-2 text-emerald-500 dark:text-emerald-400">•</span>
-                          <span className="line-clamp-3 hover:line-clamp-none transition-all duration-300">{item}</span>
+                          <span className={expandedIndex === index ? '' : 'line-clamp-1'}>{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -99,11 +99,11 @@ export default function Timeline({ events }: TimelineProps) {
                 </div>
 
                 {/* Expand/Collapse Button */}
-                {event.description.length > 2 && (
+                {event.description.length > 0 && (
                   <div className="px-4 py-2 border-t border-gray-100 dark:border-gray-700">
                     <button
                       onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
-                      className="text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
+                      className="text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors w-full text-left"
                     >
                       {expandedIndex === index ? 'Show less' : 'Show more'}
                     </button>
