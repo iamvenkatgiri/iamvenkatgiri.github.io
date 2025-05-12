@@ -14,6 +14,7 @@ import {
   EnvelopeIcon,
   PhotoIcon,
   HomeIcon,
+  Squares2X2Icon,
 } from '@heroicons/react/24/outline';
 
 const navigation = [

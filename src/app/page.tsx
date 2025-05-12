@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import Navigation from '@/components/Navigation';
 import { projects } from '@/data/projects';
 import { events } from '@/data/events';
@@ -48,12 +48,25 @@ const SkillsSection = dynamic(() => import('@/components/SkillsSection'), {
   ssr: false
 });
 
+const ProjectsSection = dynamic(() => import('@/components/ProjectsSection'), {
+  loading: () => <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg h-screen" />,
+  ssr: false
+});
+
 // Loading components
 const LoadingSection = ({ height }: { height: string }) => (
   <div className={`animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg ${height}`} />
 );
 
 export default function Home() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 6;
+
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
+
   return (
     <main className="min-h-screen">
       <Suspense fallback={<div className="fixed inset-0 bg-gray-100 dark:bg-gray-800" />}>
@@ -158,24 +171,9 @@ export default function Home() {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="py-16 bg-white dark:bg-slate-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Featured Projects</h2>
-              <div className="w-16 h-1 bg-emerald-600 mx-auto mb-4"></div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Suspense fallback={<LoadingSection height="h-64" />}>
-                {projects.map((project, index) => (
-                  <ProjectCard
-                    key={`${project.title}-${index}`}
-                    {...project}
-                  />
-                ))}
-              </Suspense>
-            </div>
-          </div>
-        </section>
+        <Suspense fallback={<LoadingSection height="h-screen" />}>
+          <ProjectsSection />
+        </Suspense>
 
         <style jsx global>{`
           .custom-scrollbar::-webkit-scrollbar {
