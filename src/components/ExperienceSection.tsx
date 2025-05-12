@@ -32,13 +32,6 @@ export default function ExperienceSection() {
   return (
     <section id="experience" className="py-12 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Experience & Education</h2>
-          <p className="text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            My professional journey and academic background
-          </p>
-        </div>
-
         <div className="space-y-8">
           {/* Experience Section */}
           <div>
