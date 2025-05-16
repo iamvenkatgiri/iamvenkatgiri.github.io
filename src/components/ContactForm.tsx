@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -20,11 +21,25 @@ export default function ContactForm() {
     setSubmitStatus('idle');
 
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Replace these with your actual EmailJS credentials
+      const templateParams = {
+        title: formData.subject,
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        'service_7ibzih9',    // e.g., 'service_xxxxx'
+        'template_ge6xjqi',   // e.g., 'template_xxxxx'
+        templateParams,
+        'dBv7B6vZZFq6gP8Xj'     // e.g., 'user_xxxxx'
+      );
+
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
+      console.error('Error sending email:', error, JSON.stringify(error, Object.getOwnPropertyNames(error)));
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
