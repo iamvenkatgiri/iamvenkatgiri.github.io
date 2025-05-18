@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
+const isGithubPages = process.env.DEPLOY_TARGET === 'GH_PAGES';
+
 const nextConfig = {
   output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : '',
+  basePath: isGithubPages ? '/portfolio' : '',
   trailingSlash: true,
   images: {
     unoptimized: true,
@@ -40,7 +42,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/portfolio/' : '',
+  assetPrefix: isGithubPages ? '/portfolio/' : '',
   poweredByHeader: false,
   compress: true,
   reactStrictMode: true,
