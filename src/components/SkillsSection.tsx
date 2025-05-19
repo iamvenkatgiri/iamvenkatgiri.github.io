@@ -58,19 +58,14 @@ export default function SkillsSection() {
 
         {/* All Skills Section */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              All Skills
-            </h3>
+          <div className="mb-2 flex items-center space-x-2 w-fit">
             <button
               onClick={() => setShowAllSkills(!showAllSkills)}
-              className="flex items-center space-x-1 text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300"
+              className="flex items-center space-x-2 text-lg font-semibold text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded transition-colors"
             >
-              <span>{showAllSkills ? 'Show Less' : 'Show More'}</span>
+              <span>All Skills</span>
               <ChevronDownIcon
-                className={`w-4 h-4 transition-transform ${
-                  showAllSkills ? 'rotate-180' : ''
-                }`}
+                className={`w-5 h-5 transition-transform ${showAllSkills ? 'rotate-180' : 'animate-bounce-chevron'}`}
               />
             </button>
           </div>
@@ -162,6 +157,13 @@ export default function SkillsSection() {
           .scrollbar-hide {
             -ms-overflow-style: none;
             scrollbar-width: none;
+          }
+          @keyframes bounce-chevron {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+          }
+          .animate-bounce-chevron {
+            animation: bounce-chevron 1s infinite;
           }
         `}</style>
       </div>
