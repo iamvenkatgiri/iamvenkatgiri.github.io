@@ -18,7 +18,7 @@ export default function ContactSection() {
       <div className="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none">
         <div className="absolute top-0 left-0 w-32 h-32">
           <Image
-            src={`${process.env.NODE_ENV === 'production' ? '/iamvenkatgiri.github.io' : ''}/images/contact-pattern-1.svg`}
+            src="/images/contact-pattern-1.svg"
             alt=""
             width={128}
             height={128}
@@ -28,7 +28,7 @@ export default function ContactSection() {
         </div>
         <div className="absolute bottom-0 right-0 w-32 h-32">
           <Image
-            src={`${process.env.NODE_ENV === 'production' ? '/iamvenkatgiri.github.io' : ''}/images/contact-pattern-2.svg`}
+            src="/images/contact-pattern-2.svg"
             alt=""
             width={128}
             height={128}
