@@ -10,6 +10,19 @@ interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
+    name: 'Core Expertise',
+    skills: [
+      { name: 'Cloud Engineering', level: 'Expert' },
+      { name: 'DevOps Engineering', level: 'Expert' },
+      { name: 'Site Reliability Engineering', level: 'Expert' },
+      { name: 'Platform Engineering', level: 'Expert' },
+      { name: 'Programming', level: 'Advanced' },
+      { name: 'Containerization and Orchestration', level: 'Expert' },
+      { name: 'Observability/Monitoring', level: 'Expert' },
+      { name: 'Cloud Architecture', level: 'Expert' }
+    ]
+  },
+  {
     name: 'Cloud Platforms & IaC',
     skills: [
       { name: 'AWS', level: 'Expert' },

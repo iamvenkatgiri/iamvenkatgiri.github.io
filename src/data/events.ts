@@ -32,6 +32,30 @@ export const events: TimelineEvent[] = [
     ]
   },
   {
+    title: "Linux Administrator",
+    company: "UT Dallas Office of Information Technology",
+    location: "Richardson, TX",
+    date: "May 2024 - June 2024",
+    type: "experience",
+    description: [
+      "Upgraded Linux workstations and performed initial setup using Ansible playbooks",
+      "Collected metrics using scripts and visualized data in PowerBi Dashboards"
+    ]
+  },
+  {
+    title: "Graduate Teaching Assistant",
+    company: "The University of Texas at Dallas",
+    location: "Richardson, TX",
+    date: "Aug 2023 - May 2024",
+    type: "experience",
+    description: [
+      "Provided academic and administrative support to Cloud Computing students at The University of Texas at Dallas",
+      "Assisted in setting up e-learning platforms using Blackboard and MS Stream/Teams for seamless online education",
+      "Collaborated with professors to create assignments focusing on Amazon Web Services to enhance student learning outcomes",
+      "Conducted exam review sessions and classroom sessions to clarify doubts and reinforce key concepts"
+    ]
+  },
+  {
     title: "Infrastructure Engineer – L2",
     company: "Avizva Solutions",
     location: "India",

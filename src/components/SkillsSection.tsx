@@ -10,14 +10,13 @@ export default function SkillsSection() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showAllSkills, setShowAllSkills] = useState(false);
 
-  // Get featured skills (Expert level) from all categories
-  const featuredSkills = skillCategories.flatMap(category =>
-    category.skills.filter(skill => skill.level === 'Expert')
-  );
+  // Only use the 'Core Expertise' category for featured skills
+  const coreExpertiseCategory = skillCategories.find(category => category.name === 'Core Expertise');
+  const featuredSkills = coreExpertiseCategory ? coreExpertiseCategory.skills : [];
 
   const filteredCategories = selectedCategory
-    ? skillCategories.filter(category => category.name === selectedCategory)
-    : skillCategories;
+    ? skillCategories.filter(category => category.name === selectedCategory && category.name !== 'Core Expertise')
+    : skillCategories.filter(category => category.name !== 'Core Expertise');
 
   return (
     <section id="skills" className="py-8 sm:py-12 bg-gray-50 dark:bg-gray-900">
@@ -98,57 +97,57 @@ export default function SkillsSection() {
                     >
                       All Categories
                     </button>
-                    {skillCategories.map((category) => (
-                      <button
-                        key={category.name}
-                        onClick={() => setSelectedCategory(category.name)}
-                        className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                          selectedCategory === category.name
-                            ? 'bg-emerald-500 text-white'
-                            : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                        }`}
-                      >
-                        {category.name}
-                      </button>
-                    ))}
+                    {skillCategories
+                      .filter(category => category.name !== 'Core Expertise')
+                      .map((category) => (
+                        <button
+                          key={category.name}
+                          onClick={() => setSelectedCategory(category.name)}
+                          className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                            selectedCategory === category.name
+                              ? 'bg-emerald-500 text-white'
+                              : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                          }`}
+                        >
+                          {category.name}
+                        </button>
+                      ))}
                   </div>
                 </div>
 
                 {/* Skills Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                   {filteredCategories.map((category) =>
-                    category.skills
-                      .filter(skill => skill.level !== 'Expert') // Exclude featured skills
-                      .map((skill, index) => (
-                        <motion.div
-                          key={`${category.name}-${skill.name}`}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.3, delay: index * 0.05 }}
-                          className="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-sm"
-                        >
-                          <div className="flex items-center space-x-3">
-                            <SkillIcon
-                              name={skill.name}
-                              className={`w-5 h-5 ${
-                                skill.level === 'Advanced'
-                                  ? 'text-blue-500'
-                                  : skill.level === 'Intermediate'
-                                  ? 'text-yellow-500'
-                                  : 'text-gray-400'
-                              }`}
-                            />
-                            <div>
-                              <span className="text-sm font-medium text-gray-900 dark:text-white">
-                                {skill.name}
-                              </span>
-                              <span className="block text-xs text-gray-500 dark:text-gray-400">
-                                {skill.level}
-                              </span>
-                            </div>
+                    category.skills.map((skill, index) => (
+                      <motion.div
+                        key={`${category.name}-${skill.name}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.05 }}
+                        className="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-sm"
+                      >
+                        <div className="flex items-center space-x-3">
+                          <SkillIcon
+                            name={skill.name}
+                            className={`w-5 h-5 ${
+                              skill.level === 'Advanced'
+                                ? 'text-blue-500'
+                                : skill.level === 'Intermediate'
+                                ? 'text-yellow-500'
+                                : 'text-gray-400'
+                            }`}
+                          />
+                          <div>
+                            <span className="text-sm font-medium text-gray-900 dark:text-white">
+                              {skill.name}
+                            </span>
+                            <span className="block text-xs text-gray-500 dark:text-gray-400">
+                              {skill.level}
+                            </span>
                           </div>
-                        </motion.div>
-                      ))
+                        </div>
+                      </motion.div>
+                    ))
                   )}
                 </div>
               </motion.div>

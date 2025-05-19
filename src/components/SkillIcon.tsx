@@ -8,8 +8,8 @@ interface SkillIconProps {
 }
 
 export default function SkillIcon({ name, className = '' }: SkillIconProps) {
-  const icon = skillIcons[name] || skillIcons['AWS']; // Fallback to AWS icon if not found
-
+  const icon = skillIcons[name];
+  if (!icon) return null;
   return (
     <div 
       className={`w-6 h-6 flex items-center justify-center ${className}`}
