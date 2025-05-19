@@ -3,7 +3,7 @@ const isGithubPages = process.env.DEPLOY_TARGET === 'GH_PAGES';
 
 const nextConfig = {
   output: 'export',
-  basePath: isGithubPages ? '/portfolio' : '',
+  basePath: isGithubPages ? '/iamvenkatgiri.github.io' : '',
   trailingSlash: true,
   images: {
     unoptimized: true,
@@ -27,7 +27,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'iamvenkatgiri.github.io',
-        pathname: '/portfolio/**',
+        pathname: '/iamvenkatgiri.github.io/**',
       }
     ],
     dangerouslyAllowSVG: true,
@@ -42,7 +42,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  assetPrefix: isGithubPages ? '/portfolio/' : '',
+  assetPrefix: isGithubPages ? '/iamvenkatgiri.github.io/' : '',
   poweredByHeader: false,
   compress: true,
   reactStrictMode: true,

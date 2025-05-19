@@ -6,16 +6,16 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link';
 
 const images = [
-  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-1.webp`,
-  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-2.webp`,
-  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-3.webp`,
-  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-4.webp`,
-  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-5.webp`,
-  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-6.webp`,
-  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-7.webp`,
-  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-8.webp`,
-  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-9.webp`,
-  `${process.env.NODE_ENV === 'production' ? '/portfolio' : ''}/journey-images/webp/journey-10.webp`
+  `${process.env.NODE_ENV === 'production' ? '/iamvenkatgiri.github.io' : ''}/journey-images/webp/journey-1.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/iamvenkatgiri.github.io' : ''}/journey-images/webp/journey-2.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/iamvenkatgiri.github.io' : ''}/journey-images/webp/journey-3.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/iamvenkatgiri.github.io' : ''}/journey-images/webp/journey-4.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/iamvenkatgiri.github.io' : ''}/journey-images/webp/journey-5.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/iamvenkatgiri.github.io' : ''}/journey-images/webp/journey-6.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/iamvenkatgiri.github.io' : ''}/journey-images/webp/journey-7.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/iamvenkatgiri.github.io' : ''}/journey-images/webp/journey-8.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/iamvenkatgiri.github.io' : ''}/journey-images/webp/journey-9.webp`,
+  `${process.env.NODE_ENV === 'production' ? '/iamvenkatgiri.github.io' : ''}/journey-images/webp/journey-10.webp`
 ];
 
 export default function BackgroundSlideshow() {
