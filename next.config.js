@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
-const isGithubPages = process.env.DEPLOY_TARGET === 'GH_PAGES';
+// Removed isGithubPages logic since we always deploy to root
 
 const nextConfig = {
   output: 'export',
-  basePath: isGithubPages ? '/iamvenkatgiri.github.io' : '',
+  basePath: '', // No basePath for user/organization site
   trailingSlash: true,
   images: {
     unoptimized: true,
@@ -24,11 +24,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'placehold.co',
       },
-      {
-        protocol: 'https',
-        hostname: 'iamvenkatgiri.github.io',
-        pathname: '/iamvenkatgiri.github.io/**',
-      }
+      // Remove iamvenkatgiri.github.io remotePattern unless you serve images from there
     ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -42,7 +38,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  assetPrefix: isGithubPages ? '/iamvenkatgiri.github.io/' : '',
+  assetPrefix: '', // No assetPrefix for user/organization site
   poweredByHeader: false,
   compress: true,
   reactStrictMode: true,
